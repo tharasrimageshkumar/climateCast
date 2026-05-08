@@ -15,11 +15,26 @@ db = SQLAlchemy(app)
 
 API_KEY = os.getenv("API_KEY")
 
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
 # Database Model
 class SearchHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     city = db.Column(db.String(100))
 
+from flask import redirect
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+
+    if request.method == 'POST':
+        password = request.form['password']
+
+        if password == ADMIN_PASSWORD:
+            searches = SearchHistory.query.all()
+            return render_template('history.html', searches=searches)
+
+    return render_template('admin.html')
 @app.route('/', methods=['GET', 'POST'])
 def index():
     weather = None
