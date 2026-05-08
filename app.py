@@ -1,17 +1,18 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import requests
+import os
 
 app = Flask(__name__)
 
 # Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 # Replace with your API key
-import os
+
 API_KEY = os.getenv("API_KEY")
 
 # Database Model
