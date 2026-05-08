@@ -11,7 +11,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Replace with your API key
-API_KEY = "2f2c69d11da6fbec145966359891dd84"
+import os
+API_KEY = os.getenv("API_KEY")
 
 # Database Model
 class SearchHistory(db.Model):
