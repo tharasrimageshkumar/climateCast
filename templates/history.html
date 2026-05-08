@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search History</title>
+</head>
+<body>
+
+<h1>Stored Search History</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>City</th>
+    </tr>
+
+    {% for search in searches %}
+    <tr>
+        <td>{{ search.id }}</td>
+        <td>{{ search.city }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
