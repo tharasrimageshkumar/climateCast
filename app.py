@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 import requests
 import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
